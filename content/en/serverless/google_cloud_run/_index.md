@@ -26,9 +26,9 @@ Make sure you have a [Datadog API Key][10] and are using a programming language 
 
 ### Deploy a sample application in one click
 
-To deploy a sample application without the need to follow the rest of the guide, you can use on of [these examples][12]. The installation process will ask the required details.
+To deploy a sample application without the need to follow the rest of the guide, you can use on of [these examples][12]. The installation process will ask the required details such as the Datadog API Key. Note that these applications send data to the default website `datadoghq.com`.
 
-### Build your container with Datadog instrumentation
+### Configure your container with the Datadog Agent
 
 To build your container with Datadog instrumentation you can follow one of these two methods, depending if you are using a Dockerfile or buildpack.
 
@@ -139,13 +139,6 @@ See [Tracing Ruby Applications][1] for detailed instructions. [Sample code for a
 {{< /programming-lang >}}
 {{< /programming-lang-wrapper >}}
 
-Then build the container with
-
-```shell
-docker build --tag gcr.io/YOUR_PROJECT/YOUR_APP_NAME .
-
-```
-
 #### Configure the Datadog Agent using buildpack
 
 [`Pack Buildpacks`][4] provide a convenient way to package your container without using a Dockerfile. This example will use the GCP container registry and Datadog serverless buildpack. Build your application by running the following command:
@@ -204,15 +197,15 @@ gcloud run deploy APP_NAME --image=gcr.io/YOUR_PROJECT/APP_NAME \
 
 ### Results
 
-You should be able to see metrics and traces of your Cloud Run application in the Datadog UI! You can submit custom metrics using a [DogStatsd client][7]. Only `DISTRIBUTION` metrics should be used.
+Once the deploy is completed, you should be able to see metrics and traces of your Cloud Run application in the Datadog UI after at most a few minutes!
 
-### Logs
+## Additional Configurations
 
-If you use [GCP integration][1] your logs are already being collected. Alternatively, you can set the `DD_LOGS_ENABLED` environment variable to true to capture application logs through the serverless instrumentation.
+- **Logs**: If you use [GCP integration][1] your logs are already being collected. Alternatively, you can set the `DD_LOGS_ENABLED` environment variable to true to capture application logs through the serverless instrumentation.
 
-### Advanced options and configurations
+- **Custom Metrics**: You can submit custom metrics using a [DogStatsd client][7]. Only `DISTRIBUTION` metrics should be used.
 
-#### Environment variables
+- **Environment Variables**
 
 | Variable          | Description                                                             |
 |-------------------|-------------------------------------------------------------------------|
