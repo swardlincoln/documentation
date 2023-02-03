@@ -25,7 +25,7 @@ If you are using a Dockerfile to build your application, complete the following:
 
 4. Use the `CMD` instruction to run your existing application and other required commands as arguments.
 
-The following are examples of how to complete these three steps. You may need to adjust these examples depending on your existing Dockerfile setup. 
+The following are examples of how to complete these three steps. You may need to adjust these examples depending on your existing Dockerfile setup.
 
 
 {{< programming-lang-wrapper langs="go,python,nodejs,java,dotnet,ruby" >}}
@@ -108,6 +108,17 @@ See [Tracing Ruby Applications][1] for detailed instructions. [Sample code for a
 [2]: https://github.com/DataDog/crpb/tree/main/ruby-on-rails
 {{< /programming-lang >}}
 {{< /programming-lang-wrapper >}}
+
+### Deploy an Application with Datadog Agent
+
+1. Click on **Container Apps** service and then create
+2. Select the desired resources and proceed to the **App Settings** tab
+3. Select the container image you built to be deployed
+4. As environment variables, set
+   - `DD_API_KEY` with your Datadog API key
+   - `DD_SITE` with the Datadog website that will receive your data. If omitted, it defaults to `datadoghq.com`
+   - `DD_TRACE_ENABLED` to true
+5. Complete the service creation
 
 ### Custom metrics
 You can submit custom metrics using a [DogStatsd client][4].
