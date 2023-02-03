@@ -111,12 +111,12 @@ See [Tracing Ruby Applications][1] for detailed instructions. [Sample code for a
 
 ### Deploy an Application with Datadog Agent
 
-1. Click on **Container Apps** service and then create
+1. Click on **Container Apps** service and then create a new `Container App`
 2. Select the desired resources and proceed to the **App Settings** tab
-3. Select the container image you built to be deployed
+3. Select the container image you built in the previous steps
 4. As environment variables, set
-   - `DD_API_KEY` with your Datadog API key
-   - `DD_SITE` with the Datadog website that will receive your data. If omitted, it defaults to `datadoghq.com`
+   - `DD_API_KEY` with your Datadog API key. For production use, use a secret managed by Azure `Key Vault`
+   - `DD_SITE` with the Datadog website that will receive your data. It will be {{< region-param key="dd_site" code="true" >}} if you selected your SITE on the right of this page. If omitted, it defaults to `datadoghq.com`
    - `DD_TRACE_ENABLED` to true
 5. Complete the service creation
 
